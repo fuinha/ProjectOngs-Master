@@ -1,6 +1,6 @@
 const connection = require('../database/connection');
-const crypto = require('crypto');
 
+const generateUniqueId = require('../utils/generateUniqueId');
 module.exports = {
     
     // create table POST /ongs 
@@ -10,7 +10,7 @@ module.exports = {
         const data = request.body;
         console.log(data);
         
-        const id = crypto.randomBytes(4).toString('HEX');
+        const id = generateUniqueId();
         
         await connection('ongs').insert({
             id,
